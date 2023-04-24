@@ -18,11 +18,11 @@ user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
 
-def get_weather():
-  url = "https://restapi.amap.com/v3/weather/weatherInfo?key=55fe6d7eee5701df549772e201edb064&city=410482"
-  res = requests.get(url).json()
-  weather = res['lives']['list'][0]
-  return 1,2
+# def get_weather():
+#   url = "https://restapi.amap.com/v3/weather/weatherInfo?key=55fe6d7eee5701df549772e201edb064&city=410482"
+#   res = requests.get(url).json()
+#   weather = res['lives']['list'][0]
+#   return 1,2
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -48,6 +48,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"weather":{"value":1},"temperature":{"value":1},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
