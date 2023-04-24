@@ -21,7 +21,7 @@ template_id = os.environ["TEMPLATE_ID"]
 def get_weather():
   url = "https://restapi.amap.com/v3/weather/weatherInfo?city=410482&key=55fe6d7eee5701df549772e201edb064"
   res = requests.get(url).json()
-  weather = res['data']['list'][0]
+  weather = res['lives'][0]
   return weather['weather'], math.floor(weather['temp'])
 
 def get_count():
